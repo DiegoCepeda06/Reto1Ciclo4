@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Reto1C4</string>
+
+
+    //Textos home
+    <string name="text_Home">Bienvenido</string>
+    <string name="btn_Home">Catalogo</string>
+
+    //Textos Catalogo
+    <string name="text_TituloCatalogo">Catalogo</string>
+
+    <string name="text_Producto1">Guitarra</string>
+    <string name="text_Producto2">Saxofon</string>
+    <string name="text_Producto3">Trompeta</string>
+
+    <string name="btn_Producto1">Ver mas</string>
+    <string name="btn_Producto2">Ver mas</string>
+    <string name="btn_Producto3">Ver mas</string>
+    <string name="btn_ProductoHome">Home</string>
+
+    //Textps Informacion
+    <string name="btn_Info">Volver</string>
+    <string name="text_info">Ver mas</string>
+
+
+</resources>
