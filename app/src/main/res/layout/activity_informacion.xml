@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
     android:background="@drawable/fondohome"
     tools:context=".Informacion">
 
@@ -18,7 +21,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -43,6 +46,24 @@
                         android:layout_gravity="center"
                         tools:srcCompat="@tools:sample/avatars" />
 
+                    <TextView
+                        android:id="@+id/textInfoDescripcion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="casual"
+                        android:backgroundTint="#7C334C"
+                        android:gravity="center"
+                        android:text="" />
+
+                    <TextView
+                        android:id="@+id/textInfoPrecio"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="casual"
+                        android:backgroundTint="#7C334C"
+                        android:gravity="center"
+                        android:text="" />
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -55,6 +76,7 @@
 
                     <Button
                         android:id="@+id/btnInfo"
+
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:alpha="20"
@@ -65,7 +87,23 @@
                         android:textStyle="italic" />
                 </LinearLayout>
             </LinearLayout>
+
         </LinearLayout>
+
     </ScrollView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:id="@+id/btnInfoHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha="20"
+        android:backgroundTint="#7C334C"
+        android:fontFamily="casual"
+        android:text="@string/btn_ProductoHome"
+        android:textAlignment="center"
+        android:textStyle="italic"
+        android:layout_gravity="center"
+        android:layout_margin="50dp"
+        tools:layout_editor_absoluteY="433dp" />
+
+</LinearLayout>

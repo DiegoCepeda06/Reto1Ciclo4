@@ -1,68 +1,90 @@
 package com.example.reto1c4;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.reto1c4.Adapters.ProductoAdapter;
+import com.example.reto1c4.BaseDatos.DBHelper;
+import com.example.reto1c4.Entities.Producto;
+import com.example.reto1c4.Service.ProductServices;
+
+import java.util.ArrayList;
 
 public class Catalogo extends AppCompatActivity {
-    private Button btnProducto1, btnProducto2, btnProducto3, btnProductoHome;
-    private TextView textProducto1, textProducto2, textProducto3;
+    private ListView listViewCatalogo;
+    private ProductServices productServices;
+    private ArrayList<Producto> arrayListProductos;
+    private ProductoAdapter productoAdapter;
+    private DBHelper dbHelper;
+    private Button btnProductoHome;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_catalogo);
+        arrayListProductos = new ArrayList<>();
 
-    btnProducto1 = (Button) findViewById(R.id.btnProducto1);
-    btnProducto2 = (Button) findViewById(R.id.btnProducto2);
-    btnProducto3 = (Button) findViewById(R.id.btnProducto3);
-    btnProductoHome = (Button) findViewById(R.id.btnProductoHome);
+        btnProductoHome = (Button) findViewById(R.id.btnProductoHome);
 
-    textProducto1 =(TextView) findViewById(R.id.textProducto1);
-    textProducto2 =(TextView) findViewById(R.id.textProducto2);
-    textProducto3 =(TextView) findViewById(R.id.textProducto3);
 
-    btnProducto1.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            Intent intent = new Intent(getApplicationContext(), Informacion.class);
-            intent.putExtra("title", textProducto1.getText().toString());
-            intent.putExtra("codeImage", R.drawable.producto1);
-            startActivity(intent);
+        try {
+            dbHelper = new DBHelper(this);
+
+
+            productServices = new ProductServices();
+            Cursor cursor = dbHelper.getData();
+            arrayListProductos = productServices.cursorToArray(cursor);
+            //Toast.makeText(this, "InsertOK", Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            Toast.makeText(this, "LecturaDB", Toast.LENGTH_SHORT).show();
+
         }
-    });
 
-    btnProducto2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Informacion.class);
-                intent.putExtra("title", textProducto2.getText().toString());
-                intent.putExtra("codeImage", R.drawable.producto2);
-                startActivity(intent);
-            }
-    });
 
-    btnProducto3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Informacion.class);
-                intent.putExtra("title", textProducto3.getText().toString());
-                intent.putExtra("codeImage", R.drawable.producto3);
-                startActivity(intent);
-            }
-    });
-    btnProductoHome.setOnClickListener(new View.OnClickListener() {
+        productoAdapter = new ProductoAdapter(this, arrayListProductos);
+        listViewCatalogo = (ListView) findViewById(R.id.listViewCatalogo);
+        listViewCatalogo.setAdapter(productoAdapter);
+
+
+        btnProductoHome.setOnClickListener((new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
             }
-        });
+        }));
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.actionAdd:
+                Intent intent = new Intent(getApplicationContext(), ProductForm.class);
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
 
     }
+
+
 }

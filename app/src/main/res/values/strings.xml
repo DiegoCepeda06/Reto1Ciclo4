@@ -22,5 +22,21 @@
     <string name="btn_Info">Volver</string>
     <string name="text_info">Ver mas</string>
 
+    //Textox Template
+    <string name="text_NombreTemplateProducto">Producto</string>
+    <string name="text_btnTemplateProducto">Ver mas</string>
+    <string name="text_PrecioTemplateProducto">Precio</string>
+    <string name="text_DescipcionTemplateProducto">Descripcion</string>
+
+    //Textos Formulario
+    <string name="text_TituloForm">Formulario</string>
+    <string name="btn_Update">UPDATE</string>
+    <string name="btn_Delete">DELETE</string>
+    <string name="btn_Get">GET</string>
+    <string name="btn_Add">Agregar</string>
+    <string name="text_NameFormProduct">Producto</string>
+    <string name="text_DescriptionFormProduct">Descripcion</string>
+
+
 
 </resources>
