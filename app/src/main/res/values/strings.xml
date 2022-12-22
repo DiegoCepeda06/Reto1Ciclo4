@@ -4,7 +4,7 @@
 
     //Textos home
     <string name="text_Home">Bienvenido</string>
-    <string name="btn_Home">Catalogo</string>
+    <string name="btn_Home">Entrar</string>
 
     //Textos Catalogo
     <string name="text_TituloCatalogo">Catalogo</string>
@@ -36,7 +36,6 @@
     <string name="btn_Add">Agregar</string>
     <string name="text_NameFormProduct">Producto</string>
     <string name="text_DescriptionFormProduct">Descripcion</string>
-
 
 
 </resources>

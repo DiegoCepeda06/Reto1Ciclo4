@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "899967918888",
+    "project_id": "ciclo4dc",
+    "storage_bucket": "ciclo4dc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:899967918888:android:9f945b9270c6b21aafa61d",
+        "android_client_info": {
+          "package_name": "com.example.reto1c4"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "899967918888-j07ndcgsu2knvd888ee4b1th6hecjelc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD13n_hC0zCWbp8YNH7k5DyrMfSVKu_Is0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "899967918888-j07ndcgsu2knvd888ee4b1th6hecjelc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

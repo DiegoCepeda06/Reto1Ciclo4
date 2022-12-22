@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.reto1c4.Adapters.ProductoAdapter;
+import com.example.reto1c4.BaseDatos.DBFirebase;
 import com.example.reto1c4.BaseDatos.DBHelper;
 import com.example.reto1c4.Entities.Producto;
 import com.example.reto1c4.Service.ProductServices;
@@ -27,6 +28,7 @@ public class Catalogo extends AppCompatActivity {
     private ArrayList<Producto> arrayListProductos;
     private ProductoAdapter productoAdapter;
     private DBHelper dbHelper;
+    private DBFirebase dbFirebase;
     private Button btnProductoHome;
 
 
@@ -34,29 +36,28 @@ public class Catalogo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_catalogo);
-        arrayListProductos = new ArrayList<>();
+        arrayListProductos = new ArrayList<Producto>();
 
         btnProductoHome = (Button) findViewById(R.id.btnProductoHome);
 
 
         try {
-            dbHelper = new DBHelper(this);
-
-
+            //dbHelper = new DBHelper(this);
+            dbFirebase = new DBFirebase();
             productServices = new ProductServices();
             Cursor cursor = dbHelper.getData();
             arrayListProductos = productServices.cursorToArray(cursor);
             //Toast.makeText(this, "InsertOK", Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
-            Toast.makeText(this, "LecturaDB", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Bienvenido al Catalogo", Toast.LENGTH_SHORT).show();
 
         }
-
 
         productoAdapter = new ProductoAdapter(this, arrayListProductos);
         listViewCatalogo = (ListView) findViewById(R.id.listViewCatalogo);
         listViewCatalogo.setAdapter(productoAdapter);
 
+        dbFirebase.getData(productoAdapter, arrayListProductos);
 
         btnProductoHome.setOnClickListener((new View.OnClickListener() {
             @Override

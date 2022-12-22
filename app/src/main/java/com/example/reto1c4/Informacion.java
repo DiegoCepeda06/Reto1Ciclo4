@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.reto1c4.BaseDatos.DBFirebase;
 import com.example.reto1c4.BaseDatos.DBHelper;
 import com.example.reto1c4.Entities.Producto;
 import com.example.reto1c4.Service.ProductServices;
@@ -28,6 +29,7 @@ public class Informacion extends AppCompatActivity {
     private TextView textInfoDescripcion;
     private TextView textInfoPrecio;
     private Button btnInfoHome;
+    private DBFirebase dbFirebase;
 
 
     @Override
@@ -41,6 +43,8 @@ public class Informacion extends AppCompatActivity {
         textInfoPrecio = (TextView) findViewById(R.id.textInfoPrecio);
         imgInfo = (ImageView) findViewById(R.id.imgInfo);
         dbHelper = new DBHelper(this);
+        dbFirebase = new DBFirebase();
+
         productServices = new ProductServices();
         btnInfoHome = (Button) findViewById(R.id.btnInfoHome);
 
@@ -55,14 +59,13 @@ public class Informacion extends AppCompatActivity {
 
         Intent intentIn = getIntent();
 
-        String id = intentIn.getStringExtra("id");
-        ArrayList<Producto> list = productServices.cursorToArray(dbHelper.getDataById(id));
-        Producto producto = list.get(0);
 
-        textInfoTitle.setText(producto.getName());
-        textInfoDescripcion.setText(producto.getDescription());
-        textInfoPrecio.setText(String.valueOf(producto.getPrice()));
-        imgInfo.setImageBitmap(productServices.byteToBitmap(producto.getImage()));
+        textInfoTitle.setText(intentIn.getStringExtra("name"));
+        textInfoDescripcion.setText(intentIn.getStringExtra("description"));
+        textInfoPrecio.setText(String.valueOf(intentIn.getStringExtra("price")));
+        productServices.insertUriToImageView(intentIn.getStringExtra("image"),imgInfo,Informacion.this);
+
+        //imgInfo.setImageBitmap(productServices.byteToBitmap(producto.getImage()));
 
 
         btninfo.setOnClickListener(new View.OnClickListener() {
